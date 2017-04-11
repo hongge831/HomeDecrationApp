@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<style type="text/css">
+			#main {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-align: center;
+				-webkit-box-pack: center;
+			}
+			#head {
+				height: 45px;
+			}
+			#header {
+				height: 45px;
+				margin: 0;
+			}
+			#myhouse_body_first {
+				width: 100%;
+				height: 70px;
+				margin-top: 50px;
+				margin-bottom: 20px;
+				display: -webkit-box;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+			}
+			#myhouse_body_first #leftp {
+				width: 80px;
+				margin: 0;
+			}
+			#myhouse_body_first #leftp img {
+				width: 80px;
+				height: 80px;
+				border-radius: 80px;
+			}
+			#myhouse_body_first #middle {
+				-webkit-box-flex: 1;
+			}
+			#myhouse_body_first #rightp {
+				width: 50px;
+				margin: 0;
+			}
+			#myhouse_body_first #rightp img {
+				width: 50px;
+				height: 50px;
+			}
+			.color {
+				background-color: #3e3d43;
+			}
+			.mui-title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#denglu {
+				color: #fdfcff;
+				float: right;
+				margin-top: 11px;
+			}
+			#touxiang {
+				width: 70px;
+				height: 70px;
+				margin: -15% 0 0 5%;
+				float: left;
+			}
+			#jiantou {
+				width: 30px;
+				height: 30px;
+				float: right;
+				margin: -7% 5% 0 0;
+			}
+			#myhouse_body_second {
+				margin-top: 10px;
+			}
+			.mui-media-body {
+				margin: 4% 0 0 0;
+			}
+			#gengduo {
+				width: 50px;
+				height: 50px;
+			}
+			#myhouse_body {
+				margin: 0;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="head">
+				<header class="mui-bar mui-bar-nav color" id="header">
+					<h1 class="mui-title">我的</h1>
+					<!--<div id="myhouse_title">
+					<img class="shezhi" src="image/iconfont-shezhi.png"/>
+					</div>-->
+					<div id="denglu">
+						登录
+					</div>
+				</header>
+			</div>
+			<div id="myhouse_body_first">
+				<div id="leftp"><img id="touxiang"  src="../image/iconmonstr-user-19-240.png"/>
+				</div>
+				<div style="font-size: 1.2em;margin: -5% 0 0 20%;" id="middle">
+					家居设计
+				</div>
+				<div id="rightp"><img id="jiantou" src="../image/iconfont-weibiaoti1.png" onclick="gerenxinxi()"/>
+				</div>
+			</div>
+			<div id="myhouse_body">
+				<div id="myhouse_body_second">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<a class="mui-navigate-right" tapmode="" onclick="dingdan()"> <img class="mui-media-object mui-pull-left" src="../image/iconfont-dingdan.png">
+							<div class="mui-media-body">
+								订单管理
+							</div> </a>
+						</li>
+						<li class="mui-table-view-cell mui-media" tapmode="" onclick="wodeshoucang()">
+							<a class="mui-navigate-right"> <img class="mui-media-object mui-pull-left" src="../image/iconfont-weishoucang.png">
+							<div class="mui-media-body">
+								我的收藏
+							</div> </a>
+						</li>
+						<li class="mui-table-view-cell mui-media" tapmode="" onclick="gouwuche()">
+							<a class="mui-navigate-right"> <img class="mui-media-object mui-pull-left" src="../image/iconfont-gouwuche.png">
+							<div class="mui-media-body">
+								购物车
+							</div> </a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script>
+		apiready = function() {
+			//alert("hhh")
+			var leftp = $api.byId('leftp');
+			var username = $api.getStorage('nickname');
+			var tpl4 = '';
+			tpl4 += '<img src=\"' + $api.getStorage('touxiang') + '\">';
+			if (username != null) {
+				$('#denglu').html(username);
+				$('#leftp').html(tpl4);
+			}
+			
+		}
+		function checklogin() {
+			var username = $api.getStorage('nickname');
+			$('#denglu').html(username);
+		}
+
+		function showiamge(data) {
+			//alert("hh");
+			var tpl4 = '';
+			tpl4 += '<img src=' + data + '>';
+			//alert(tpl4);
+			$('#leftp').html(tpl4);
+		}
+
+
+		$('#denglu').click(function() {
+			var username = $api.getStorage('nickname');
+			if (username != null) {
+				api.confirm({
+					title : '操作提示',
+					msg : '是否注销登录',
+					buttons : ['确定', '取消']
+				}, function(ret, err) {
+					if (ret.buttonIndex == 1) {
+						$api.rmStorage('username');
+						$api.rmStorage('nickname');
+						$api.rmStorage('password');
+						$api.rmStorage('wdsc');
+						$api.rmStorage('userimage');
+						$api.rmStorage('touxiang');
+						//$api.setStorage('touxiang','../image/iconmonstr-user-19-240.png');
+						$('#denglu').html("登录");
+						$('#leftp').html('<img id="touxiang"  src="../image/iconmonstr-user-19-240.png"/>');
+					}
+				});
+			} else {
+				api.openWin({
+					name : 'denglu',
+					url : './denglu.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			}
+		});
+		function gerenxinxi() {
+			if ($api.getStorage('username') != null) {
+				api.openWin({
+					name : 'gerenxinxi',
+					url : './gerenxinxi.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			} else {
+				alert("请先登录！");
+			}
+		}
+
+		function dingdan() {
+			if ($api.getStorage('username') != null) {
+				api.openWin({
+					name : 'dingdan',
+					url : './dingdanguanli.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			} else {
+				alert("请先登录哦！");
+			}
+		}
+
+		function wodeshoucang() {
+			if ($api.getStorage('username') != null) {
+				api.openWin({
+					name : 'wodeshoucang',
+					url : './wodeshoucang.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			} else {
+				alert("请先登录！");
+			}
+		}
+
+		function gouwuche() {
+			if ($api.getStorage('username') != null) {
+				api.openWin({
+					name : 'gouwuche',
+					url : './gouwuche.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			} else {
+				alert("请先登录！");
+			}
+		}
+
+		function xiaoxi() {
+			if ($api.getStorage('username') != null) {
+				api.openWin({
+					name : 'xiaoxi',
+					url : './xiaoxi.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			} else {
+				alert("请先登录！");
+			}
+		}
+	</script>
+</html>

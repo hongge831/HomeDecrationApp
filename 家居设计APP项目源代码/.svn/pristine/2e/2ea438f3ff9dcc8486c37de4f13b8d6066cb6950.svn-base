@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="utf-8">
+
+			//mui.init();
+			function shejijiemian() {
+		
+				api.openWin({
+					name : 'shejijiemian',
+					url : '../html/shejijiemian.html'
+				});
+			};
+			
+		</script>
+		<style type="text/css">
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			#main {
+				width: 100%;
+				height: 100%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+			}
+			#header {
+				width: 100%;
+				height: 50px;
+				background-color: darkgrey;
+				margin: 0;
+			}
+			#slider {
+				width: 100%;
+				-webkit-box-flex: 2;
+			}
+			#creataa {
+				height: 20%;
+				-webkit-box-flex: 1;
+			}
+			.mui-content {
+				height: 100%;
+			}
+			#wodefangan {
+				height: 100%;
+				width: auto;
+				background-color: #FF5053;
+				border-radius: 0.5em;
+				color: white;
+			}
+			#shoucangfangan {
+				width: auto;
+				height: 100%;
+				background-color: darkgrey;
+				border-radius: 0.5em;
+				color: white;
+				border: solid 0px red;
+			}
+			#creat {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				background-color: limegreen;
+				font-size: 1.5em;
+				color: white;
+				border-radius: 0.5em;
+			}
+			.jieshao {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				font-size: 1.2em;
+				line-height: normal;
+				color: black;
+			}
+			.mui-slider-item {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				padding: 5px 3% 0 3%;
+				border: solid 2px lightgrey;
+			}
+			.mui-slider-item img {
+				height: 200px;
+				margin-bottom: 3.5%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content" id="main">
+			<div class="mui-title" id="header">
+				<a href="">
+				<button id="wodefangan" type="button" class="mui-btn">
+					我的方案
+				</button></a>
+				<a href="">
+				<button id="shoucangfangan" type="button" class="mui-btn">
+					收藏方案
+				</button></a>
+			</div>
+			<br />
+			<br />
+			<br />
+			<div class="mui-slider" id="slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"> <img src="../image/24.jpg" />
+						<div class="jieshao">
+							方案特点：U型收纳区编辑点评：客厅采用统一的复古风实木家具，空间充满文化感和贵气感，展示柜和电视柜形成U型的收纳区，与凹凸式吊顶外形相呼应，增强了空间的立体感。
+						</div> </a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"> <img src="../image/21.jpg" />
+						<div class="jieshao">
+							方案特点：法式风格如同法国这个国家一样，浪漫迷人，仿佛普罗旺斯的阳光，洒满你的家。设计师以本季的流行色之蓝色调营造浪漫时尚法式风情，讲求心灵的自然回归感，给人一种扑面而来的浓郁气息。大胆的用色尝试将法式传统的三颜色与当季流行色融汇，给人以强烈的视觉冲击，但又不失法式贵气的浪漫。
+						</div> </a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"> <img src="../image/22.jpg" />
+						<div class="jieshao">
+							方案特点：用粉色小格纹布艺把墙面围起来，甚至是窗帘也换上同款布料，白色的床品、台灯、长绒白色地毯点缀其中，甜美的清爽之间装扮出甜美浪漫的公主房
+						</div> </a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"> <img src="../image/23.jpg" />
+						<div class="jieshao">
+							方案特点：在传统的古典风格的基础上，增加了很多的现在元素，因而受到了不少人的喜爱。网友来秀自己的爱家，130㎡的户型，还是满宽敞的。130㎡新古典装修风格，三室两厅的家居空间，充满十足的个性，是很多人看了都会喜欢的，赶紧来一探究竟吧。
+						</div> </a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"> <img src="../image/24.jpg" />
+						<div class="jieshao">
+							方案特点：U型收纳区编辑点评：客厅采用统一的复古风实木家具，空间充满文化感和贵气感，展示柜和电视柜形成U型的收纳区，与凹凸式吊顶外形相呼应，增强了空间的立体感。
+						</div> </a>
+					</div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="../image/21.jpg" />
+						<div class="jieshao">
+							方案特点：法式风格如同法国这个国家一样，浪漫迷人，仿佛普罗旺斯的阳光，洒满你的家。设计师以本季的流行色之蓝色调营造浪漫时尚法式风情，讲求心灵的自然回归感，给人一种扑面而来的浓郁气息。大胆的用色尝试将法式传统的三颜色与当季流行色融汇，给人以强烈的视觉冲击，但又不失法式贵气的浪漫。
+						</div> </a>
+					</div>
+				</div>
+			</div>
+			<div id="creataa">
+				<button type="button" class="mui-btn" id="creat" tapmode="" onclick="shejijiemian()">
+					立刻创建我家
+				</button> </a>
+			</div>
+		</div>
+	</body>
+</html>

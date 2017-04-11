@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			#back {
+				color: #fdfcff;
+				width: 150px;
+			}
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#wrapper {
+				margin-top: 0px;
+				width: 110%;
+				background-color: #EFEFF4;
+				margin-left: -5%;
+				border: solid darkgray 1px;
+			}
+			#part ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 10px 0 0 0;
+				display: -webkit-box;
+				border-bottom-style: solid;
+				border-bottom-color: #BBBBBB;
+				border-bottom-width: 1px;
+			}
+			#part li {
+				width: 25%;
+				text-align: center;
+				color: black;
+			}
+			.child {/*使跳蚤市场下面出现一条蓝色横线*/
+				height: 30px;
+				border-bottom-style: solid;
+				border-bottom-color: deepskyblue;
+				border-bottom-width: 3px;
+			}
+			.child a {
+				color: deepskyblue;
+			}
+			.part1 {
+				color: #000000;
+			}
+			.part2 {
+				color: #000000;
+			}
+			.part3 {
+				color: #000000;
+			}
+			.part4 {
+				color: #000000;
+			}
+			.lxrnm {
+				margin: 3% 0 0 30%;
+			}
+			.mui-pull-left {
+				border-radius: 30px;
+			}
+		</style>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav "id="head">
+			<div id="wrapper">
+				<div id="part">
+					<ul>
+						<li>
+							<a class="part1" tapmode ="" onclick="shejiao()">跳蚤市场</a>
+						</li>
+						<li>
+							<a class="part2" tapmode ="" onclick="shangjiazixun()">商家资讯</a>
+						</li>
+						<li>
+							<a class="part3" tapmode ="" onclick="xiaoxi()">消息</a>
+						</li>
+						<li class="child">
+							<a class="part4">联系人</a>
+						</li>
+					</ul>
+				</div>
+		</header>
+		<div class="mui-content">
+			<div id="lxr">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;" id="Helloword"> <img class="mui-media-object mui-pull-left" src="../image/1.jpg">
+						<div class="mui-media-body lxrnm">
+							Helloworld
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/touxiang1.jpg">
+						<div class="mui-media-body lxrnm">
+							走，游玩去~
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/6.png">
+						<div class="mui-media-body lxrnm">
+							淡漠
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/7.png">
+						<div class="mui-media-body lxrnm">
+							为你而鼓掌
+						</div> </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script charset="UTF-8">
+		function shejiao() {
+			api.openFrame({
+				name : 'shejiao',
+				url : '../html/shejiao.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+		function shangjiazixun() {
+			api.openFrame({
+				name : 'shangjiazixun',
+				url : '../html/shangjiazixun.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+		function xiaoxi() {
+			api.openFrame({
+				name : 'xiaoxi',
+				url : '../html/xiaoxi.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+	</script>
+</html>

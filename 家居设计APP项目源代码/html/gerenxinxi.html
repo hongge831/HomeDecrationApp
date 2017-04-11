@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="utf-8">
+			
+		</script>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			.mui-bar {
+				background-color: #0cc;
+			}
+			.mui-action-back {
+				color: white;
+			}
+			.self_information {
+				float: right;
+				margin-right: 10%;
+			}
+			#main {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+			}
+			#first {
+				height: 45px;
+			}
+			#self img {
+				width: 180px;
+				height: 180px;
+				border-radius: 80px;
+				margin: 0;
+			}
+			#self {
+				-webkit-box-flex: 1;
+			}
+			#list {
+				margin: 0;
+				width: 98%;
+				-webkit-box-flex: 3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="first">
+				<header class="mui-bar mui-bar-nav"id="head">
+					<a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tapmode="" onclick="back()"></a>
+					<h1 class="mui-title"id="title">个人信息</h1>
+				</header>
+			</div>
+			<div id="self">
+				<img src="../image/iconmonstr-user-19-240.png"/ tapmode="" onclick="upload()">
+			</div>
+			<div class="mui-card" id="list">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+						<div class="self_list">
+							<label for="">昵称</label>
+							<div class="self_information" id="nickname"></div>
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+						<div class="self_list">
+							<label for="">我的账号</label>
+							<div class="self_information" id="accound"></div>
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+						<div class="self_list">
+							<label for="">我的二维码</label>
+						</div> </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+						<div class="self_list">
+							<label for="">联系方式</label>
+						</div> </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script>
+		apiready = function() {
+			api.showProgress({});
+			var userN = $api.getStorage('username');
+			var nickN = $api.getStorage('nickname');
+			var nickname = $api.byId('nickname');
+			var accound = $api.byId('accound');
+			var image = $api.byId('self');
+			var tpl1 = '';
+			var tpl2 = '';
+			var tpl3 = '';
+			if (userN != null) {
+				tpl3 += '<img src=\"' + $api.getStorage('touxiang') + '\" tapmode="" onclick="upload()">';
+				tpl1 += userN;
+				tpl2 += nickN;
+				nickname.innerHTML = tpl2;
+				accound.innerHTML = tpl1;
+				image.innerHTML = tpl3;
+			}
+			api.hideProgress();
+		}
+		function upload() {
+			api.getPicture({
+				sourceType : 'album',
+				encodingType : 'jpg',
+				mediaValue : 'pic',
+				destination : 'url'
+			}, function(ret, err) {
+				if (ret) {
+					upfile(ret.data);
+				}
+			});
+		}
+
+		function upfile(file) {
+			var userid = $api.getStorage('userid');
+			var url = "http://d.apicloud.com/mcm/api/file";
+			api.showProgress({});
+			api.ajax({
+				url : url,
+				method : 'POST',
+				headers : {
+					"X-APICloud-AppId" : "A6909468985016",
+					"X-APICloud-AppKey" : "72c03249d5d346b2559bca91268f98c4cda312f1.1455457015373"
+				},
+				data : {
+					files : {
+						"file" : file
+					},
+					values : {
+						"filename" : "头像"
+					}
+				}
+			}, function(ret, err) {
+				if (ret) {
+					api.ajax({
+						url : 'http://d.apicloud.com/mcm/api/userinfo/' + userid,
+						method : 'PUT',
+						headers : {
+							"X-APICloud-AppId" : "A6909468985016",
+							"X-APICloud-AppKey" : "72c03249d5d346b2559bca91268f98c4cda312f1.1455457015373"
+						},
+						data : {
+							values : {
+								"photo" : ret
+							}
+						}
+					}, function(ret, err) {
+						if (ret) {
+							//alert(JSON.stringify(ret));
+							var imageurl = JSON.parse(JSON.stringify(ret)).photo.url;
+							//alert(imageurl);
+							api.imageCache({
+								url : imageurl
+							}, function(ret, err) {
+								if (ret) {
+									//alert(JSON.stringify(ret));
+									$api.setStorage('touxiang', JSON.parse(JSON.stringify(ret)).url);
+									//alert($api.getStorage('touxiang'));
+									var jsfun = 'showiamge(\'' + $api.getStorage('touxiang') + '\');';
+									//alert(jsfun);
+									api.execScript({
+										name : 'root',
+										frameName : 'wode',
+										script : jsfun
+									});
+									$('#self').html('<img src=\"' + $api.getStorage('touxiang') + '\" tapmode="" onclick="upload()">');
+								} else {
+									alert(JSON.stringify(err));
+								}
+							});
+							api.hideProgress();
+						}
+					});
+				}
+			});
+		}
+
+		function check(data) {
+		alert(data);
+			$('#self').html('<img src=\"' + data + '\" tapmode="" onclick="upload()">');
+		}
+
+		function returnWin() {
+			var jsfun = 'checklogin2();';
+			api.closeWin({});
+			api.execScript({
+				name : 'root',
+				frameName : 'wode',
+				script : jsfun
+			});
+		}
+
+		function writeLocal(ret) {
+			var imageurl = JSON.parse(JSON.stringify(ret)).url;
+			api.imageCache({
+				url : imageurl
+			}, function(ret, err) {
+				$api.rmStorage('userimage');
+				$api.setStorage('userimage', JSON.parse(JSON.stringify(ret)).url);
+				//alert($api.getStorage('userimage'));
+			});
+		}
+
+		function back() {
+			var denglu = $api.byId('back');
+			api.closeWin();
+		}
+	</script>
+</html>

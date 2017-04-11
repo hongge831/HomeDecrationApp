@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+			mui.plusReady(function() {
+				var start = document.getElementById("start");
+				start.addEventListener('tap', function() {
+					mui.openWindow({
+						url : 'linggan.html',
+						id : 'start'
+					})
+				})
+			})
+		</script>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+			}
+			.mui-content-padded {
+				padding: 10px;
+			}
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				cursor: pointer;
+			}
+			.mui-content-padded a .like {
+				margin-top: 12px;
+			}
+			.mui-spinner, .mui-spinner-white {
+				margin-top: 12px
+			}
+			.active .mui-spinner-indicator {
+				background: #007AFF;
+			}
+			.mui-content a {
+				color: #8F8F94;
+			}
+			.mui-content a.active {
+				color: #007aff;
+			}
+			.title {
+				font-family: "微软雅黑";
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav"id="head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tapmode="" onclick="back()"></a>
+			<h1 class="mui-title"id="title">筛选</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view mui-media">
+					<h3 class="title" align="center">空间</h3>
+					<div class="mui-input-row mui-checkbox ">
+						<label>书房</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>卧室</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>洗浴间</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>其他</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+				</li>
+				<li class="mui-table-view mui-media">
+					<h3 class="title" align="center">风格</h3>
+					<div class="mui-input-row mui-checkbox ">
+						<label>书房</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>卧室</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>洗浴间</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>其他</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+				</li>
+				<li class="mui-table-view mui-media">
+					<h3 class="title" align="center">空间</h3>
+					<div class="mui-input-row mui-checkbox ">
+						<label>书房</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>卧室</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>洗浴间</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+					<div class="mui-input-row mui-checkbox ">
+						<label>其他</label>
+						<input name="Checkbox" type="checkbox" >
+					</div>
+				</li>
+			</ul>
+			<button type="button" class="mui-btn mui-btn-block mui-btn-blue" id="start">
+				开始筛选
+			</button>
+		</div>
+	</body>
+		<script type="text/javascript" src="./script/api.js"></script>
+		<script type="text/javascript" src="./script/index.js"></script>
+		<script>
+			function back(){
+				api.closeWin({
+                });
+			}
+		</script>
+</html>

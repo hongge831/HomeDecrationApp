@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			.mui-content {
+				margin-top: 12px;
+			}
+			.part {
+				height: 38px;
+			}
+			.part1 {
+				color: black;
+				padding: 0 18% 13px 21%;
+				border-bottom-style: solid;
+				border-bottom-color: deepskyblue;
+				border-bottom-width: 3px;
+			}
+			.part2 {
+				color: black;
+				padding: 0 20% 0 15%;
+			}
+			.part3_0 {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-box-align: center;
+				-webkit-box-pack: justify;
+			}
+			.part3_1 {
+				width: 60%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.part3_2 {
+				color: red;
+				font-size: 1.2em;
+			}
+			.part3_good {
+				height: 30px;
+			}
+		</style>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav "id="head">
+			<a class=" mui-icon mui-icon-left-nav mui-pull-left" id="back" tpamode="" onclick="back()"></a>
+			<h1 class="mui-title"id="title">我的收藏</h1>
+		</header>
+		<div class="mui-content">
+			<div class="part">
+				<a class="part1" href="wodeshoucang.html">方案</a>
+				<a class="part2" tapmode="" onclick="shangpin()">商品</a>
+			</div>
+			<ul class="mui-table-view mui-grid-view" id="mainShow"></ul>
+			<script id="list_temp" type="x-dot-template">
+				{{for(var i=0;i<it.length;i++){}}
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 picture">
+				<a href="" class="photo"> <img class="mui-media-object" src={{=JSON.stringify(it[i].photolink)}} style="width:220px;height:180px" tapmode="" onclick="shejizhe()">
+				<div class="part3">
+				<div class="part3_0">
+				<div class="part3_1">
+				{{=JSON.stringify(it[i].describe)}}
+				</div>
+				<!--  <div class="part3_2">&yen;666</div>-->
+				</div>
+				<div class="part3_0">
+				<img src="../image/wujiaoxin.png" class="part3_good"></img>
+				</div>
+				</div> </a>
+				</li>
+				{{}}}
+			</script>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="./script/index.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script>
+		apiready = function() {
+			var mainshow = $api.byId('mainShow');
+			var wdsc = $api.getStorage('wdsc');
+			if (wdsc != null) {
+				mainshow.innerHTML = wdsc;
+			}
+			api.showProgress({});
+			var query = api.require('query');
+			var model = api.require('model');
+			var userid = $api.getStorage('userid');
+			model.config({
+				appKey : '1E20F3F1-F15C-7740-C279-05640189320C',
+				host : 'https://d.apicloud.com'
+			});
+			var relation_m = api.require('relation');
+			relation_m.findAll({
+				class : 'userinfo',
+				id : userid,
+				column : 'shoucang'
+			}, function(ret, err) {
+				if (ret) {
+					addlist(ret);
+				}
+			});
+			api.hideProgress();
+		}
+		function addlist(ret) {
+			//alert(JSON.stringify(ret[0].describe));
+			var tpl = $api.byId('list_temp').text;
+			var tplfun = doT.template(tpl);
+			var obj = tplfun(ret);
+			var mainshow = $api.byId('mainShow');
+			mainshow.innerHTML = obj;
+			$api.setStorage('wdsc', obj);
+		}
+
+		function shejizhe() {
+			api.openWin({
+				name : 'shejizhe',
+				url : '../html/shejizhe.html'
+			});
+		}
+		function shangpin(){
+		var head = $api.byId('head');
+		var headinfo = $api.offset(head);
+			api.openFrame({
+	            name: 'shangpin',
+	            url: './shangpin.html',
+	            rect: {
+		            x:0,
+		            y:headinfo.h,
+		            w:'auto',
+		            h:'auto'
+	            }
+            });
+		}
+
+		function back() {
+			api.closeWin({
+			});
+		}
+	</script>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			.mui-content {
+				margin-top: 28px;
+			}
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#wrapper {
+				margin-top: 0px;
+				width: 110%;
+				background-color: #EFEFF4;
+				margin-left: -5%;
+				border: solid darkgray 1px;
+			}
+			#part ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 10px 0 0 0;
+				display: -webkit-box;
+				border-bottom-style: solid;
+				border-bottom-color: #BBBBBB;
+				border-bottom-width: 1px;
+			}
+			#part li {
+				width: 25%;
+				text-align: center;
+				color: black;
+			}
+			.child {/*使跳蚤市场下面出现一条蓝色横线*/
+				height: 30px;
+				border-bottom-style: solid;
+				border-bottom-color: deepskyblue;
+				border-bottom-width: 3px;
+			}
+			.part1 {
+				color: #000000;
+			}
+			.part2 {
+				color: #000000;
+			}
+			.part3 {
+				color: deepskyblue;
+			}
+			.part4 {
+				color: #000000;
+			}
+			img{
+				border-radius: 5px;
+			}
+			.shijian {
+				font-size: 0.7em;
+				color: #666666;			
+			}
+		</style>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="UTF-8">
+		</script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav "id="head">
+			<div id="wrapper">
+				<div id="part">
+					<ul>
+						<li>
+							<a class="part1" tapmode ="" onclick="shejiao()">跳蚤市场</a>
+						</li>
+						<li>
+							<a class="part2" tapmode ="" onclick="shangjiazixun()">商家资讯</a>
+						</li>
+						<li class="child">
+							<a class="part3">消息</a>
+						</li>
+						<li>
+							<a class="part4" tapmode ="" onclick="lianxiren()">联系人</a>
+						</li>
+					</ul>
+				</div>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/1.jpg">
+					<div class="mui-media-body">
+						Helloworld<span class="mui-pull-right shijian">下午1:22</span>
+						<p class="mui-ellipsis">
+							我从山中来，带着兰花草。种在小园中，希望花开早。
+						</p>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/touxiang1.jpg">
+					<div class="mui-media-body">
+						走，游玩去~<span class="mui-pull-right shijian">上午10:45</span>
+						<p class="mui-ellipsis">
+							我知道了
+						</p>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/touxiang2.jpg">
+					<div class="mui-media-body">
+						淡漠<span class="mui-pull-right shijian">昨天</span>
+						<p class="mui-ellipsis">
+							我在图书馆呢。
+						</p>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;"> <img class="mui-media-object mui-pull-left" src="../image/touxiang3.jpg">
+					<div class="mui-media-body">
+						为你而鼓掌<span class="mui-pull-right shijian">2016/4/22</span>
+						<p class="mui-ellipsis">
+							好的，拜拜
+						</p>
+					</div> </a>
+				</li>
+			</ul>
+			<br />
+			<br />
+			<br />
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script type="text/javascript" src="./script/index.js"></script>
+	<script>
+		function shejiao() {
+			api.openFrame({
+				name : 'shejiao',
+				url : '../html/shejiao.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+		function shangjiazixun() {
+			api.openFrame({
+				name : 'shangjiazixun',
+				url : '../html/shangjiazixun.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+		function lianxiren() {
+			api.openFrame({
+				name : 'lianxiren',
+				url : '../html/lianxiren.html',
+				rect : {
+					x : 0,
+					y : 45,
+					w : api.winWidth,
+					h : api.winHeight - 50 - 47
+				}
+			});
+		}
+	</script>
+</html>

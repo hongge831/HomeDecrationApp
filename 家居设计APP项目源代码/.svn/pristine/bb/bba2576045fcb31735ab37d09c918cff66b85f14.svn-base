@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8"/>
+	<meta name='apple-touch-fullscreen' content='yes'>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta content="fullscreen=yes,preventMove=no" name="ML-Config">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no,email=no,address=no" />
+	<script type="text/javascript">
+		!function(e){function t(){var t=o.getBoundingClientRect().width;t/i>640&&(t=640*i),e.rem=t/16,o.style.fontSize=e.rem+"px"}var i,n,a,r=e.document,o=r.documentElement,l=r.querySelector('meta[name="viewport"]'),d=r.querySelector('meta[name="flexible"]');if(l){var s=l.getAttribute("content").match(/initial\-scale=(["']?)([\d\.]+)\1?/);s&&(n=parseFloat(s[2]),i=parseInt(1/n))}else if(d){var s=d.getAttribute("content").match(/initial\-dpr=(["']?)([\d\.]+)\1?/);s&&(i=parseFloat(s[2]),n=parseFloat((1/i).toFixed(2)))}if(!i&&!n){var m=(e.navigator.appVersion.match(/android/gi),e.navigator.appVersion.match(/iphone/gi)),i=e.devicePixelRatio;i=m?i>=3?3:i>=2?2:1:1,n=1/i}if(o.setAttribute("data-dpr",i),!l)if(l=r.createElement("meta"),l.setAttribute("name","viewport"),l.setAttribute("content","initial-scale="+n+", maximum-scale="+n+", minimum-scale="+n+", user-scalable=no"),o.firstElementChild)o.firstElementChild.appendChild(l);else{var c=r.createElement("div");c.appendChild(l),r.write(c.innerHTML)}e.dpr=i,e.addEventListener("resize",function(){clearTimeout(a),a=setTimeout(t,300)},!1),e.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(a),a=setTimeout(t,300))},!1),"complete"===r.readyState?r.body.style.fontSize=12*i+"px":r.addEventListener("DOMContentLoaded",function(){r.body.style.fontSize=12*i+"px"},!1),t()}(window);
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<title>家具设计</title>
+</head>
+<body>
+	<div class="warp">
+		<img src="images/bg.png" alt="">
+		<div class="menu">
+			<ul>
+				<li data-name="a">
+					<img src="images/icon1.png" alt="">
+					<p>窗户</p>
+				</li>
+				<li data-name="b">
+					<img src="images/icon2.png" alt="">
+					<p>床</p>
+				</li>
+				<li data-name="c">
+					<img src="images/icon3.png" alt="">
+					<p>空调</p>
+				</li>
+				<li data-name="d">
+					<img src="images/icon4.png" alt="">
+					<p>衣柜</p>
+				</li>
+			</ul>
+		</div>
+		<div class="choose">
+			<ul>
+				<li>
+					<img src="images/a1.png" alt="">
+					<p>款式1</p>
+				</li>
+				<li>
+					<img src="images/a2.png" alt="">
+					<p>款式2</p>
+				</li>
+				<li>
+					<img src="images/a3.png" alt="">
+					<p>款式3</p>
+				</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div id="sec-a" class="sec" name="窗户"><img src="images/a2.png" alt=""></div>
+			<div id="sec-b" class="sec" name="床"><img src="images/b2.png" alt=""></div>
+			<div id="sec-c" class="sec" name="空调"><img src="images/c2.png" alt=""></div>
+			<div id="sec-d" class="sec" name="衣柜"><img src="images/d2.png" alt=""></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $choose=$(".choose");
+			var $li=$choose.find('li');
+			$(".menu li").click(function(event) {
+				var name=$(this).attr("data-name");
+				$li.each(function(index, el) {
+					$(this).children('img').attr("src","images/"+name+(index+1)+".png");
+				}).attr("data-name",name);
+				$choose.show();
+			});
+			$li.click(function(event) {
+				var src=$(this).children('img').attr("src");
+				var name=$(this).attr("data-name");
+				$("#sec-"+name).children('img').attr("src",src);
+				$choose.hide();
+			});
+		})
+	</script>
+</body>
+</html>

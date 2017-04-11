@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <script src="../script/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="UTF-8">
+		mui.init();
+		function show(){
+			var value = document.getElementById("div1").style.display;
+            if(value=="none"){
+                document.getElementById("div1").style.display="block";
+                document.getElementById("focus").focus();
+            }else
+             	document.getElementById("div1").style.display="none";
+		}
+	</script>
+    <style>
+    	html,body{
+    		background-color: #EEEEF0;
+    	}
+    	#head {
+			background-color: #3e3d43;
+		}
+		#title {
+			color: #fdfcff;
+			font-family: haettenschweiler;
+		}
+		#back {
+			color: #fdfcff;
+		}
+		.fenlei1,.fenlei2,.fenlei3{
+			padding-top: 3px;
+			padding-bottom: 3px;
+			padding-left: 10px;
+			font-size: 12px;
+			vertical-align: middle;
+			color: lightslategrey;
+		}
+        .shop{
+        	border-top: 1px solid #ccc;
+            background-color: #FFF;
+        }
+        .shop span{
+            color: #1A1A1A;
+            font-size: 11px;
+        }
+        .shop_name{
+            height: 33px;
+        }
+        .shop_name_text{
+        	padding-left: 7px;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .shop_item{
+        	background-color: #f5f5f5;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient:horizontal;
+            position: relative;
+            padding: 5px 0 5px 0;
+        }
+        .shop_item_left{
+            position: relative;
+        }
+        .item_icon{
+        	padding-left: 7px;
+            width: 63px;
+        }
+        .shop_item_center{
+            position: relative;
+            -webkit-box-flex: 1; 
+            padding-left: 7px;
+        }
+        .shop_item_center .title{
+        	font-size: 0.8em;
+            display: block;
+            line-height: 17px;
+            text-indent: 0 !important;
+        }
+        .shop_item_center .description{
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 17px;
+        }
+        .shop_item_center .classify{
+            display: block;
+            color: #9E9E9E;
+            line-height: 14px;
+        }
+        .shop_item_right{
+            text-align: right;
+            position: relative;
+            width: 73px;
+            padding-right: 7px;
+        }
+        .shop_item_right .price{
+            margin-bottom: 30px;
+        }
+        .count_group .count{
+            font-size: 13px;
+        }
+ 		.totalprice{
+ 			text-align: right;
+ 			font-size: 11px;
+ 			border-bottom: 1px solid #CCC;
+ 		}
+ 		.totalprice span{
+ 			font-size: 12px;
+ 		}
+ 		.delete{
+ 			height: 32px;
+ 			position: relative;
+ 			border-bottom: 1px solid #CCC;
+ 		}
+ 		.pingjia,.shanchu{
+ 			position: absolute;
+ 			top: 3px;
+ 			height: 25px;
+ 			font-size: 12px;
+ 			padding-top: 0;
+ 			padding-bottom: 0;
+ 		}
+ 		.pingjia{
+ 			right: 20px;
+ 			color: #e75b00;
+ 			border-color: #e75b00;
+ 		}
+ 		.peisong{
+ 			font-size: 12px;
+ 			color: lightslategrey;
+ 			border-top: 1px solid #CCCCCC;
+ 			border-bottom: 1px solid #CCCCCC;
+ 			padding-top: 5px;
+ 			padding-left: 10px;
+ 			padding-right: 7px;
+ 			padding-bottom: 5px;
+ 			background-color: #FFFFFF;
+ 		}
+ 		#shouhuoren,#dianhua,#dizhi{
+ 			color: #1A1A1A;
+ 		}
+ 		.dingdan{
+ 			font-size: 12px;
+ 			color: lightslategrey;
+ 			border-top: 1px solid #CCCCCC;
+ 			border-bottom: 1px solid #CCCCCC;
+ 			padding-top: 5px;
+ 			padding-left: 10px;
+ 			padding-right: 7px;
+ 			padding-bottom: 5px;
+ 			background-color: #FFFFFF;
+ 			line-height: 16px;
+ 		}
+ 		.dingdan span{
+ 			padding-left: 5px;
+ 		}
+ 		#div1 {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			height: 43px;
+			border-top: solid 1px #C9C9C9;
+			background-color: white;
+		}
+		#div1 input {
+			position: fixed;
+			bottom: 3px;
+			left: 1%;
+			height: 35px;
+			margin-bottom: 0;
+			text-align: center;
+			font-size: 14px;
+			width: 98%;
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav"id="head">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back"></a>
+		<h1 class="mui-title"id="title">订单详情</h1>
+	</header>
+    <div class="mui-content">
+    	<div class="fenlei2">配送信息</div>
+		<div class="peisong">
+			收货人：<span id="shouhuoren">王利兴</span><br />
+			联系电话：<span id="dianhua">13588253474</span><br />
+			收货地址：<span id="dizhi">浙江省杭州市江干区浙江工商大学钱江湾生活区</span><br />
+		</div>
+    	<div class="fenlei1">订单详情</div>
+        <div class="shop">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+                <span class="shop_name_text">
+                  	欧普照明电工电器旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+                <div class="shop_item_left pull-left">
+                    <img src="../image/ershoutaideng.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">欧普led台灯</span>
+                    <span class="description">
+                     	护眼学习护眼学生书桌卧室床头宿舍寝室节能小台灯
+                    </span>
+                    <span class="classify">
+         			            开关类型：触摸开关
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price">￥89.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span>89.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+			<div class="delete">
+				<button class="pingjia" onclick="show()">评价</button>
+			</div>
+        </div>
+
+		<div class="fenlei3">订单信息</div>
+		<div class="dingdan">
+			订单编号：<span>1761761470887541</span><br />
+			创建时间：<span>2016-03-31 15:35:09</span><br />
+			付款时间：<span>2016-03-31 15:35:15</span><br />
+			发货时间：<span>2016-03-31 16:14:16</span><br />
+			成交时间：<span>2016-04-03 04:33:45</span><br />
+		</div><br />
+    </div>
+    <div id="div1" style="display:none">
+		<input id="focus" type="text" name="" placeholder="点击输入你的评论"/>
+	</div>
+</body>
+</html>

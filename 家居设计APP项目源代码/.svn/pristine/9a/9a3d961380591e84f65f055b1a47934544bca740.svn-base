@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <script src="../script/mui.min.js"></script>
+	<link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="UTF-8">
+		mui.init();	
+		function selectAll(){	
+			var quanxuananniu = document.getElementById("quanxuananniu");
+			var b = document.getElementsByTagName('input');
+			if(b[0].checked && b[1].checked && b[2].checked){	
+				for(var i = 0;i<b.length;i++){
+					b[i].checked = false;
+				}
+			}else{
+				for(var i = 0;i<b.length;i++){
+					b[i].checked = true;
+				}
+			}
+			var j=0,amount=0.00;
+			var str = document.getElementsByName('checkbox');
+			for(i=0;i<str.length;i++){
+				if(str[i].checked){
+					j++;
+					amount += parseInt(str[i].value);
+				}
+			}
+			var geshu = document.getElementById("geshu");
+			geshu.innerHTML = j;
+			var money = document.getElementById('money');
+			money.innerHTML = amount.toFixed(2);
+		};
+		function jiesuan(){
+			var quanxuananniu = document.getElementById("quanxuananniu");
+			var b = document.getElementsByTagName('input');
+			var j=0,amount=0.00;
+			var str = document.getElementsByName('checkbox');
+			for(i=0;i<str.length;i++){
+				if(str[i].checked){
+					j++;
+					amount += parseInt(str[i].value);
+				}
+			}
+			if(b[0].checked && b[1].checked && b[2].checked){	
+				quanxuananniu.checked = true;
+			}else{
+				quanxuananniu.checked = false;
+			}
+			var geshu = document.getElementById("geshu");
+			geshu.innerHTML = j;
+			var money = document.getElementById('money');
+			money.innerHTML = amount.toFixed(2);
+		}
+		
+		function back() {
+			api.closeWin({
+			});
+		}
+	</script>
+    <style>
+    	html,body{
+    		background-color: #EEEEF0;
+    	}
+    	#head {
+			background-color: #3e3d43;
+		}
+		#title {
+			color: #fdfcff;
+			font-family: haettenschweiler;
+		}
+		#back {
+			color: #fdfcff;
+		}
+        .shop{
+            background-color: #FFF;
+            margin-bottom: 9px;
+        }
+        .shop span{
+            color: #1A1A1A;
+            font-size: 11px;
+        }
+        .shop_name{
+            height: 33px;
+        }
+        .shop_name_icon{
+        	margin-left: 15px;
+        	vertical-align: middle;
+        	width: 14px;
+        	height: 14px;
+        }
+        .shop_name_text{
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .shop_item{
+        	background-color: #f5f5f5;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient:horizontal;
+            position: relative;
+            padding: 5px 0 5px 0;
+        }
+        .shop_item_left{
+            position: relative;
+        }
+        .item_icon{
+        	height: 70px;
+            max-width: 63px;
+        }
+        .shop_item_center{
+            position: relative;
+            -webkit-box-flex: 1; 
+            padding-left: 7px;
+        }
+        .shop_item_center .title{
+        	font-size: 0.8em;
+            display: block;
+            line-height: 17px;
+            text-indent: 0 !important;
+        }
+        .shop_item_center .description{
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 17px;
+        }
+        .shop_item_center .classify{
+            display: block;
+            color: #9E9E9E;
+            line-height: 14px;
+        }
+        .shop_item_right{
+            text-align: right;
+            position: relative;
+            width: 73px;
+            padding-right: 7px;
+        }
+        .shop_item_right .price{
+            margin-bottom: 30px;
+        }
+        .count_group .count{
+            font-size: 13px;
+        }
+ 		.totalprice{
+ 			text-align: right;
+ 			font-size: 11px;
+ 			border-bottom: 1px solid #CCC;
+ 		}
+ 		.totalprice span{
+ 			font-size: 12px;
+ 		}
+ 		.checkbox{
+ 			width: 30px;
+  		}
+  		.checkbox input{
+  			width: 30px;
+  			margin-top: 30px;
+  		}
+  		#dibu{
+  			position: fixed;
+  			bottom: 0;
+  			height: 45px;
+  			width: 100%;
+  			background-color: #f7f7f7;
+  		}
+  		#quanxuan{
+  			display: inline-block;
+  			margin-left: 10px;
+  		}
+  		#heji{
+  			display: inline-block;
+  			line-height: 45px;
+  			margin-left: 20px;
+  		}
+  		#jiesuan{
+  			color: #FFFFFF;
+  			position: fixed;
+  			bottom: 0;
+  			right: 0;
+  			border-radius: 0;
+  			border:0;
+  			background-color: #fe5400;
+  			height: 45px;
+  			width: 31%;
+  		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav"id="head">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tpamode="" onclick="back()"></a>
+		<h1 class="mui-title"id="title">购物车</h1>
+	</header>
+    <div class="mui-content">
+        <div class="shop">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+            	<img src="../icon/icon150x150.png"/ class="shop_name_icon">
+                <span class="shop_name_text">
+                  	欧普照明电工电器旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+            	<div class="checkbox">
+			  		<input onclick="jiesuan()" type="checkbox" value="89.00" id="" name="checkbox" />
+			  	</div>
+                <div class="shop_item_left pull-left">
+                    <img src="../image/ershoutaideng.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">欧普led台灯</span>
+                    <span class="description">
+                     	护眼学习护眼学生书桌卧室床头宿舍寝室节能小台灯
+                    </span>
+                    <span class="classify">
+         			            开关类型：触摸开关
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price money">￥89.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span>89.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+        </div>
+        <div class="shop">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+            	<img src="../icon/icon150x150.png"/ class="shop_name_icon">
+                <span class="shop_name_text">
+                  	卓赞旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+            	<div class="checkbox">
+			  		<input onclick="jiesuan()" type="checkbox" value="199.00" id="" name="checkbox" />
+			  	</div>
+                <div class="shop_item_left pull-left">
+                    <img src="../image/chuangtougui.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">卓赞 欧式实木雕花餐桌</span>
+                    <span class="description">
+                     	 欧式实木雕花餐桌餐椅组合吃饭椅真皮餐椅餐厅椅餐厅家具
+                    </span>
+                    <span class="classify">
+         			            颜色分类：真皮套椅
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price money">￥199.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span>199.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+        </div>
+        <div class="shop">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+            	<img src="../icon/icon150x150.png"/ class="shop_name_icon">
+                <span class="shop_name_text">
+                  	奥缔斯登旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+            	<div class="checkbox">
+			  		<input onclick="jiesuan()" type="checkbox" value="1389.00" id="" name="checkbox" />
+			  	</div>
+                <div class="shop_item_left pull-left">
+                    <img src="../image/diaodeng.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">欧式吊灯</span>
+                    <span class="description">
+                     	田园简欧客厅灯具大气奢华树脂复古美式餐厅卧室吸顶灯饰
+                    </span>
+                    <span class="classify">
+         			            颜色分类：浅色12头
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price">￥1389.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span class="money">1389.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+        </div><br /><br />
+        <div id="dibu">
+        	<div id="quanxuan">
+        		<input type="checkbox" name="" id="quanxuananniu" value="" onclick="javascript:selectAll()"/>
+        		<label>全选</label>
+        	</div>
+        	<div id="heji">
+        		合计:&yen;<span style="color: #e75b00;" id="money">0.00</span>
+        	</div>
+        	<button onclick="" id="jiesuan">结算(<span id="geshu">0</span>)</button>
+        </div>
+    </div>
+</body>
+</html>

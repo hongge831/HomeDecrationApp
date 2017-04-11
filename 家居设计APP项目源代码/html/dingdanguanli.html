@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <script src="../script/mui.min.js"></script>
+    <script type="text/javascript" src="../script/jquery-1.11.3.min.js" ></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="UTF-8">
+		mui.init();
+		function shanchu1(){
+			$('#shop_list_1').remove();
+		}
+		function shanchu2(){
+			$('#shop_list_2').remove();
+		}
+		function show(){
+			var value = document.getElementById("div1").style.display;
+            if(value=="none"){
+                document.getElementById("div1").style.display="block";
+                document.getElementById("focus").focus();
+            }else
+             	document.getElementById("div1").style.display="none";
+		}
+		function back() {
+			api.closeWin({
+			});
+		}
+	</script>
+    <style>
+    	html,body{
+    		background-color: #EEEEF0;
+    	}
+    	#head {
+			background-color: #3e3d43;
+		}
+		#title {
+			color: #fdfcff;
+			font-family: haettenschweiler;
+		}
+		#back {
+			color: #fdfcff;
+		}
+        .shop{
+            background-color: #FFF;
+            margin-bottom: 9px;
+        }
+        .shop span{
+            color: #1A1A1A;
+            font-size: 11px;
+        }
+        .shop_name{
+            height: 33px;
+        }
+        .shop_name_text{
+        	padding-left: 7px;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .shop_item{
+        	background-color: #f5f5f5;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient:horizontal;
+            position: relative;
+            padding: 5px 0 5px 0;
+        }
+        .shop_item_left{
+            position: relative;
+        }
+        .item_icon{
+        	padding-left: 7px;
+            width: 63px;
+        }
+        .shop_item_center{
+            position: relative;
+            -webkit-box-flex: 1; 
+            padding-left: 7px;
+        }
+        .shop_item_center .title{
+        	font-size: 0.8em;
+            display: block;
+            line-height: 17px;
+            text-indent: 0 !important;
+        }
+        .shop_item_center .description{
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 17px;
+        }
+        .shop_item_center .classify{
+            display: block;
+            color: #9E9E9E;
+            line-height: 14px;
+        }
+        .shop_item_right{
+            text-align: right;
+            position: relative;
+            width: 73px;
+            padding-right: 7px;
+        }
+        .shop_item_right .price{
+            margin-bottom: 30px;
+        }
+        .count_group .count{
+            font-size: 13px;
+        }
+ 		.totalprice{
+ 			text-align: right;
+ 			font-size: 11px;
+ 			border-bottom: 1px solid #CCC;
+ 		}
+ 		.totalprice span{
+ 			font-size: 12px;
+ 		}
+ 		.delete{
+ 			height: 32px;
+ 			position: relative;
+ 			border-bottom: 1px solid #CCC;
+ 		}
+ 		.pingjia,.shanchu{
+ 			position: absolute;
+ 			top: 3px;
+ 			height: 25px;
+ 			font-size: 12px;
+ 			padding-top: 0;
+ 			padding-bottom: 0;
+ 		}
+ 		.shanchu{
+ 			right: 6px;
+ 		}
+ 		.pingjia{
+ 			right: 87px;
+ 			color: #e75b00;
+ 			border-color: #e75b00;
+ 		}
+ 		#div1 {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			height: 43px;
+			border-top: solid 1px #C9C9C9;
+			background-color: white;
+		}
+		#div1 input {
+			position: fixed;
+			bottom: 3px;
+			left: 1%;
+			height: 35px;
+			margin-bottom: 0;
+			text-align: center;
+			font-size: 14px;
+			width: 98%;
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav"id="head">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tpamode="" onclick="back()"></a>
+		<h1 class="mui-title"id="title">订单管理</h1>
+	</header>
+    <div class="mui-content" id="shop_list">
+        <div class="shop" id="shop_list_1">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+                <span class="shop_name_text">
+                  	欧普照明电工电器旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+                <div class="shop_item_left pull-left">
+                    <img src="../image/ershoutaideng.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">欧普led台灯</span>
+                    <span class="description">
+                     	护眼学习护眼学生书桌卧室床头宿舍寝室节能小台灯
+                    </span>
+                    <span class="classify">
+         			            开关类型：触摸开关
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price">￥89.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span>89.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+			<div class="delete">
+				<button class="pingjia" onclick="show()">评价</button>
+				<button class="shanchu" onclick="shanchu1()">删除订单</button>
+			</div>
+        </div>
+        <div class="shop" id="shop_list_2">
+            <!-- 店铺名 -->
+            <div class="shop_name">
+                <span class="shop_name_text">
+                  	卓赞旗舰店
+                </span>
+            </div>
+            <div class="shop_item">
+                <div class="shop_item_left pull-left">
+                    <img src="../image/chuangtougui.jpg" alt="" class="item_icon">
+                </div>
+                <div class="shop_item_center">
+                    <span class="title">卓赞 欧式实木雕花餐桌</span>
+                    <span class="description">
+                     	 欧式实木雕花餐桌餐椅组合吃饭椅真皮餐椅餐厅椅餐厅家具
+                    </span>
+                    <span class="classify">
+         			            颜色分类：真皮套椅
+                    </span>
+                </div>
+                <div class="shop_item_right pull-right">
+                    <span class="price">￥199.00</span>
+                    <div class="count_group clearfix">
+                        <span class="count pull-right">×1</span>
+                    </div>
+                </div>
+            </div>
+      		<div class="totalprice">
+      			共<span>1</span>件商品 合计:&yen;<span>199.00</span>(含运费&yen;<span>0.00</span>)
+      		</div>
+			<div class="delete">
+				<button class="pingjia" onclick="show()">评价</button>
+				<button class="shanchu" onclick="shanchu2()">删除订单</button>
+			</div>
+        </div>
+    </div>
+    <div id="div1" style="display:none">
+		<input id="focus" type="text" name="" placeholder="点击输入你的评论"/>
+	</div>
+</body>
+</html>

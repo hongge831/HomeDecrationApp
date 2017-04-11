@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div  id="tab">
+			<div class="active" id="tab1">
+				菜单1
+			</div>
+			<div  id="tab2">
+				菜单2
+			</div>
+			<div  id="tab3">
+				菜单3
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script type="text/javascript" src="./script/index.js"></script>
+	<script>
+		apiready = function() {
+			api.openFrameGroup({
+				name : 'group',
+				scrollEnabled : true,
+				index : 0,
+				frames : [{
+					name : 'demo1',
+					url : 'demo1.html',
+					bounces : true,
+					vScrollBarEnabled : false,
+					hScrollBarEnabled : false
+				}, {
+					name : 'demo2',
+					url : 'demo2.html',
+					bounces : true,
+					vScrollBarEnabled : false,
+					hScrollBarEnabled : false
+				}, {
+					name : 'demo3',
+					url : 'demo3.html',
+					bounces : true,
+					vScrollBarEnabled : false,
+					hScrollBarEnabled : false
+				}]
+			}, function(ret, err) {
+				var $tab = $api.byId('tab');
+				var $tabBar = $api.domAll($tab, 'div');
+				//获取tab下div标签
+				for (var j = 0; j < $tabBar.length; j++) {
+					//移除全部active
+					$api.removeCls($tabBar[j], 'active');
+				}
+				var index = ret.index;
+				if (index == 0) {
+					var $obj = $api.byId('tab1');
+					$api.addCls($obj, 'active');
+				} else if (index == 1) {
+					var $obj = $api.byId('tab2');
+					$api.addCls($obj, 'active');
+				} else if (index == 2) {
+					var $obj = $api.byId('tab3');
+					$api.addCls($obj, 'active');
+				}
+			})
+		}
+	</script>
+</html>

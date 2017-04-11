@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			.mui-content {
+				margin-top: 12px;
+			}
+			.part {
+				height: 38px;
+			}
+			.part1 {
+				color: black;
+				padding: 0 18% 13px 21%;
+			}
+			.part2 {
+				color: black;
+				padding: 0 20% 13px 15%;
+				border-bottom-style: solid;
+				border-bottom-color: deepskyblue;
+				border-bottom-width: 3px;
+			}
+			.part3_0 {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-box-align: center;
+				-webkit-box-pack: justify;
+			}
+			.part3_1 {
+				width: 60%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.part3_2 {
+				color: red;
+				font-size: 1.2em;
+			}
+			.part3_good {
+				height: 30px;
+			}
+		</style>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		
+		<div class="mui-content">
+			<div class="part">
+				<a class="part1" href="wodeshoucang.html" tapmode="" onclick="fangan()">方案</a>
+				<a class="part2"href="shangpin.html">商品</a>
+			</div>
+			<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href=""> <img class="mui-media-object" src="../image/fa_1.jpg">
+					<div class="part3">
+						<div class="part3_0">
+							<div class="part3_1">
+								某某品牌的什么家具。。。。
+							</div>
+							<div class="part3_2">
+								&yen;666
+							</div>
+						</div>
+						<div class="part3_0">
+							<img src="../image/wujiaoxin.png" class="part3_good"></img>
+							<div class="part3_time">
+								2016/1/13
+							</div>
+						</div>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href=""> <img class="mui-media-object" src="../image/fa_2.jpg">
+					<div class="part3">
+						<div class="part3_0">
+							<div class="part3_1">
+								某某品牌的什么家具。。。。
+							</div>
+							<div class="part3_2">
+								&yen;666
+							</div>
+						</div>
+						<div class="part3_0">
+							<img src="../image/wujiaoxin.png" class="part3_good"></img>
+							<div class="part3_time">
+								2016/1/13
+							</div>
+						</div>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href=""> <img class="mui-media-object" src="../image/fa_3.jpg">
+					<div class="part3">
+						<div class="part3_0">
+							<div class="part3_1">
+								某某品牌的什么家具。。。。
+							</div>
+							<div class="part3_2">
+								&yen;666
+							</div>
+						</div>
+						<div class="part3_0">
+							<img src="../image/wujiaoxin.png" class="part3_good"></img>
+							<div class="part3_time">
+								2016/1/13
+							</div>
+						</div>
+					</div> </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href=""> <img class="mui-media-object" src="../image/fa_4.jpg">
+					<div class="part3">
+						<div class="part3_0">
+							<div class="part3_1">
+								某某品牌的什么家具。。。。
+							</div>
+							<div class="part3_2">
+								&yen;666
+							</div>
+						</div>
+						<div class="part3_0">
+							<img src="../image/wujiaoxin.png" class="part3_good"></img>
+							<div class="part3_time">
+								2016/1/13
+							</div>
+						</div>
+					</div> </a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="./script/index.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script>
+	
+	function fangan(){
+		api.closeFrame({
+	        name: 'shangpin'
+        });
+	}
+		
+	</script>
+</html>

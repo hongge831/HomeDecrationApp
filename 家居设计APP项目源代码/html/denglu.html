@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/zepto.min.js"></script>
+		<script>
+			function denglu() {
+				var QID;
+				var username = $api.byId('username').value;
+				var password = $api.byId('password').value;
+				if (username.length == 0) {
+					alert("账号不能为空");
+				} else if (password.length == 0) {
+					alert("密码不能为空");
+				} else {
+					api.showProgress({
+						style : 'default',
+						animationType : 'fade',
+						title : '正在为您跳转...',
+						text : '先喝杯茶...',
+						modal : false
+					});
+					var model = api.require('model');
+					model.config({
+						appKey : '1E20F3F1-F15C-7740-C279-05640189320C',
+						host : 'https://d.apicloud.com'
+					});
+					var query = api.require('query');
+					query.createQuery(function(ret, err) {
+						if (ret && ret.qid) {
+							query.whereEqual({
+								qid : ret.qid,
+								column : 'username',
+								value : username
+							});
+							model.findAll({
+								class : "userinfo",
+								qid : ret.qid
+							}, function(ret, err) {
+								if (JSON.stringify(ret).length != 2) {
+									var myobj = JSON.stringify(ret);
+									var userinfo = eval(myobj);
+									if (userinfo[0].password == password) {
+										$api.setStorage('username', username);
+										$api.setStorage('password', password);
+										$api.setStorage('nickname', userinfo[0].nickname);
+										$api.setStorage('userid', userinfo[0].id);
+										api.toast({
+											msg : '登录成功',
+											duration : 500,
+											location : 'bottom'
+										});
+										var jsfun = 'checklogin();';
+										api.execScript({
+											name : 'root',
+											frameName : 'wode',
+											script : jsfun
+										});
+										if (JSON.parse(JSON.stringify(ret))[0].photo != null) {
+											api.imageCache({
+												url : JSON.parse(JSON.stringify(ret))[0].photo.url
+											}, function(ret, err) {
+												if (ret) {
+													$api.setStorage('touxiang', JSON.parse(JSON.stringify(ret)).url);
+													//alert(JSON.parse(JSON.stringify(ret)).url);
+													var fun = 'showiamge(\'' + $api.getStorage('touxiang') + '\');';
+													//alert(fun);
+													api.execScript({
+														name : 'root',
+														frameName : 'wode',
+														script : fun
+													});
+												} else {
+													alert(JSON.stringify(err));
+												}
+											});
+										} else {
+											$api.setStorage('touxiang', '../image/iconmonstr-user-19-240.png');
+											//alert("niha");
+										}
+										api.closeWin({
+										});
+										api.hideProgress();
+									} else {
+										alert("密码错误！");
+										api.hideProgress();
+									}
+								} else {
+									alert("不存在此账号！");
+									api.hideProgress();
+								}
+							});
+						}
+					});
+				}
+			}
+
+			function back() {
+				var denglu = $api.byId('back');
+				api.closeWin();
+			}
+
+			function zhuce() {
+				api.openWin({
+					name : 'zhuce',
+					url : './zhuce.html',
+					pageParam : {
+						name : 'test'
+					}
+				});
+			}
+		</script>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			.mui-content-padded {
+				text-align: center;
+			}
+			.mui-content {
+				margin-top: 12px;
+			}
+			#row {
+				padding: 10px 0 10px 0;
+				height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav"id="head">
+			<h1 class="mui-title"id="title">登录</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tapmode="" onclick="back()"></a>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" >
+				<div class="mui-input-row" id="row" >
+					<label >账号:</label>
+					<input type="text" name="username" id="username" class="mui-input mui-input-clear" placeholder="请输入账号"/>
+				</div>
+				<div class="mui-input-row" id="row">
+					<label>密码：</label>
+					<input type="password" name="password" id="password" class="mui-input mui-input-clear" placeholder="请输入密码"/>
+				</div>
+			</form>
+		</div>
+		<div class="mui-content-padded">
+			<button class="mui-btn mui-btn-primary mui-btn-block" id="denglu" tapmode="" onclick="denglu()">
+				登录
+			</button>
+			<button class="mui-btn mui-btn-primary mui-btn-block" id="zhuce" tapmode="" onclick="zhuce()">
+				注册
+			</button>
+		</div>
+	</body>
+</html>

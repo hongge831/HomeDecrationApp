@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script//mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			function zhuce() {
+				var username = $api.byId('username').value;
+				var nickname = $api.byId('nickname').value;
+				var password = $api.byId('password').value;
+				var email = $api.byId('email').value;
+				var phone = $api.byId('phonenum').value;
+				var zhuce = $api.byId('zhuce').value;
+				if (username.length == 0) {
+					alert("用户名不能为空");
+				} else if (nickname.length == 0) {
+					alert("昵称不能为空");
+				} else if (password.length == 0) {
+					alert("密码不能为空");
+				} else if (email.length == 0) {
+					alert("邮箱不能为空");
+				} else if (phone.length == 0) {
+					alert("手机号码不能为空");
+				} else {
+					var model = api.require('model');
+					model.config({
+						appKey : '1E20F3F1-F15C-7740-C279-05640189320C',
+						host : 'https://d.apicloud.com'
+					});
+					var query = api.require('query');
+					query.createQuery(function(ret, err) {
+						if (ret && ret.qid) {
+							query.whereEqual({
+								qid : ret.qid,
+								column : 'username',
+								value : username
+							});
+							model.findAll({
+								class : "userinfo",
+								qid : ret.qid
+							}, function(ret, err) {
+								if (JSON.stringify(ret) == "[]") {
+									insertData();
+								} else {
+									alert("该用户名已经被注册，请换一个！");
+								}
+							});
+						}
+					});
+				}
+			}
+
+			function insertData() {
+				var username = $api.byId('username').value;
+				var nickname = $api.byId('nickname').value;
+				var password = $api.byId('password').value;
+				var email = $api.byId('email').value;
+				var phone = $api.byId('phonenum').value;
+				var zhuce = $api.byId('zhuce').value;
+				api.showProgress({});
+				api.ajax({
+					url : 'https://d.apicloud.com/mcm/api/userinfo',
+					method : "post",
+					dataType : 'json',
+					headers : {
+						"X-APICloud-AppId" : "A6909468985016",
+						"X-APICloud-AppKey" : "965ab730e02f29a19e2dc03fe9c501aceaedd642.1455007678363"
+					},
+					data : {
+						values : {
+							"username" : username,
+							"email" : email,
+							"phone" : phone,
+							"password" : password,
+							"nickname" : nickname
+						}
+					}
+				}, function(ret, err) {
+					if (ret) {
+						api.hideProgress();
+						api.showProgress({
+							style : 'default',
+							animationType : 'fade',
+							title : '正在为您跳转...',
+							text : '先喝杯茶...',
+							modal : false
+						});
+						api.closeWin({
+						});
+						api.hideProgress();
+					}
+				});
+			}
+
+			function back() {
+				api.closeWin({
+				});
+			}
+		</script>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			#row {
+				padding: 10px 0 10px 0;
+				height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav"id="head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"id="back" tapmode="" onclick="back()"></a>
+			<h1 class="mui-title"id="title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" >
+				<div class="mui-input-row" id="row">
+					<label> 账号</label>
+					<input type="text" name="username" id="username" class="mui-input mui-input-clear" placeholder="请输入账号" />
+				</div>
+				<div class="mui-input-row" id="row">
+					<label> 昵称</label>
+					<input type="text" name="nickname" id="nickname" class="mui-input mui-input-clear" placeholder="请输入昵称" />
+				</div>
+				<div class="mui-input-row" id="row">
+					<label>密码</label>
+					<input type="password" name="password" id="password" class="mui-input mui-input-clear" placeholder="请输入密码" />
+				</div>
+				<div class="mui-input-row" id="row">
+					<label>邮箱</label>
+					<input type="email" name="email" id="email" class="mui-input mui-input-clear" placeholder="请输入邮箱" />
+				</div>
+				<div class="mui-input-row" id="row">
+					<label>手机号</label>
+					<input type="number" name="phonenum" id="phonenum" class="mui-input mui-input-clear" placeholder="请输入手机号" />
+				</div>
+			</form>
+		</div>
+		<div class="mui-content-padded">
+			<button class="mui-btn mui-btn-primary mui-btn-block" id="zhuce" tapmode="" onclick="zhuce()">
+				注册
+			</button>
+		</div>
+	</body>
+</html>

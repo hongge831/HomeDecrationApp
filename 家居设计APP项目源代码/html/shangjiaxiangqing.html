@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../script/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+			function plus1() {
+				var n = document.getElementById("num1");
+				if (parseInt(n.innerHTML) == 0) {
+					n.innerHTML = parseInt(n.innerHTML) + 1;
+				} else {
+					n.innerHTML = parseInt(n.innerHTML) - 1;
+				}
+			}
+
+			function plus2() {
+				var n = document.getElementById("num2");
+				if (parseInt(n.innerHTML) == 0) {
+					n.innerHTML = parseInt(n.innerHTML) + 1;
+				} else {
+					n.innerHTML = parseInt(n.innerHTML) - 1;
+				}
+			}
+
+			function plus3() {
+				var n = document.getElementById("num3");
+				if (parseInt(n.innerHTML) == 0) {
+					n.innerHTML = parseInt(n.innerHTML) + 1;
+				} else {
+					n.innerHTML = parseInt(n.innerHTML) - 1;
+				}
+			}
+
+			function plus4() {
+				var n = document.getElementById("num3");
+				n.innerHTML = parseInt(n.innerHTML) + 1;
+			}
+		</script>
+		<style type="text/css">
+			#head {
+				background-color: #3e3d43;
+			}
+			#title {
+				color: #fdfcff;
+				font-family: haettenschweiler;
+			}
+			#back {
+				color: #fdfcff;
+			}
+			table img {
+				width: 100%;
+				margin-top: 5px;
+				max-height: 200px;
+				max-width: 100%;
+				width: auto;
+			}
+			.price {
+				color: red;
+				font-size: 1.1em;
+				font-family: "arial, helvetica, sans-serif";
+			}
+			.anniu {
+				display: table;
+				border-collapse: collapse;
+				width: 100%;
+				margin-top: -7px;
+			}
+			.btn img {
+				float: left;
+				width: 15%;
+				height: 18px;
+				margin-left: 25%;
+			}
+			.btn p {
+				font-size: 12px;
+				float: left;
+				color: #000000;
+			}
+			.btn {
+				border-top: gainsboro solid 1px;
+				width: 33%;
+				height: 30px;
+				border-radius: 0px;
+				margin-bottom: 6px;
+			}
+			.button1 {
+				border-left: hidden;
+				border-right: hidden;
+			}
+			.button2 {
+				width: 34%;
+				border-left: gainsboro solid 1px;
+				border-right: solid gainsboro 1px;
+			}
+			.button3 {
+				border-left: hidden;
+				border-right: hidden;
+			}
+			.pinglun {
+				background-color: #f7fbfc;
+				border-top: solid 1px #c9c9c9;
+				border-bottom: solid 1px #c9c9c9;
+				height: 25px;
+			}
+			.pinglun p {
+				font-size: 12px;
+				color: #000000;
+				margin-left: 10px;
+			}
+			.comment {
+				background-color: white;
+				border-bottom: solid 1px #C9C9C9;
+				position: relative;
+			}
+			.zuo {
+				height: 100%;
+				width: 15%;
+				display: inline-block;
+			}
+			.zuo img {
+				height: 35px;
+				margin-left: 5px;
+				border-radius: 50%;
+				position: absolute;
+				top: 5px;
+			}
+			.you {
+				display: inline-block;
+				white-space: normal;
+				width: 83%;
+				position: relative;
+			}
+			.username {
+				font-size: 13px;
+				margin-bottom: -3px;
+				color: #000000;
+			}
+			.time {
+				font-size: 10px;
+				color: #000000;
+				margin-bottom: 0;
+			}
+			.huifu {
+				color: #000000;
+			}
+			.like img {
+				height: 20px;
+				position: absolute;
+				top: 10px;
+				right: 20px;
+			}
+			.like span {
+				position: absolute;
+				top: 10px;
+				right: 5px;
+				font-size: 15px
+			}
+			#shuru {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 43px;
+				border-top: solid 1px #C9C9C9;
+				background-color: white;
+			}
+
+			#input {
+				
+				bottom: 3px;
+				left: 1%;
+				height: 35px;
+				margin-bottom: 0;
+				text-align: center;
+				font-size: 14px;
+				width: 80%;
+			}
+			#tijiao{
+			background-color:#007AFF;
+			margin-left:1%;	
+			width:15%;
+			text-align:center;
+			}
+			.hide{
+			display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav "id="head">
+			
+		</header>
+		<div class="mui-content" id="mainShow">	
+	
+			</div>	
+		<script id="list_tmp" type="text/x-dot-template">
+			{{for(var i = 0;i<1;i++){ }}
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell mui-media">
+					<a> <img class="mui-media-object mui-pull-left" src="{{=it.touxiang}}">
+					<div class="mui-media-body">
+						  {{=it.shangjianame}}
+						<p class='mui-ellipsis'>
+							  {{=it.fabutime}}
+						</p>
+					</div>
+					<table>
+						<tr>
+							<td><img src="{{=it.tupian}}" ></td>
+						</tr>
+					</table>
+					<p style="white-space:normal;">
+                        {{=it.describe}}
+						<br />
+						时间：  {{=it.time}}
+						<br />
+						地点：  {{=it.addr}}
+						<br />
+						联系电话：  {{=it.phone}}
+					</p> </a>
+				</li>
+			</ul>
+				<div class="anniu">
+					<button class="btn button1" type="button" onclick="xihuan()">
+						<img src="../image/heart.svg" id="xihua"/>
+						<p>
+							喜欢
+						</p>
+					</button>
+					<button class="btn button2" type="button">
+						<img src="../image/share.svg"/>
+						<p>
+							分享
+						</p>
+					</button>
+					<button class="btn button3" type="button" onclick="pinglun()">
+						<img src="../image/comment.svg"/>
+						<p>
+							评论
+						</p>
+					</button>
+				</div>
+			</div>
+			<div >
+				<div class="pinglun">
+					<img src="../image/comment.svg" style="height: 14px;display: inline-block;margin-left: 10px;vertical-align: middle;"/>
+					<p style="display: inline-block;margin-left: -2px; ">
+						评论3条
+					</p>
+				</div>
+				<div class="comment">
+					<div class="zuo">
+						<img src="../image/touxiang1.jpg"/>
+					</div>
+					<div class="you">
+						<p class="username">
+							会飞的小胖纸
+						</p>
+						<p class="time">
+							11-12 23:19
+						</p>
+						<p class="huifu">
+							包邮吗？包邮吗？包邮吗？包邮吗？亲？
+						</p>
+						<div class="like">
+							<img onclick='plus1()' src="../image/like.png"/>
+							<span id='num1'>0</span>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="zuo">
+						<img src="../image/touxiang2.jpg"/>
+					</div>
+					<div class="you">
+						<p class="username">
+							工商吴彦祖
+						</p>
+						<p class="time">
+							11-12 23:50
+						</p>
+						<p class="huifu">
+							包邮吗
+						</p>
+						<div class="like">
+							<img onclick='plus2()' src="../image/like.png"/>
+							<span id='num2'>0</span>
+						</div>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="zuo">
+						<img src="../image/touxiang3.jpg"/>
+					</div>
+					<div class="you">
+						<p class="username">
+							王利兴
+						</p>
+						<p class="time">
+							11-13 08:50
+						</p>
+						<p class="huifu">
+							不包
+						</p>
+						<div class="like">
+							<img onclick="plus3();" src="../image/like.png"/>
+							<span id='num3'>0</span>
+						</div>
+					</div>
+				</div>
+				<div id="showbox1"></div>
+			</div>
+			<div id="shurukuang">
+				
+			</div>
+				    {{}}}
+	 </script>
+		</div>
+	</body>
+		<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/index.js"></script>
+	<script type="text/javascript" src="../script/zepto.min.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script charset="UTF-8">
+	var xx='1';
+			apiready = function() {
+			var shangjianame = $api.getStorage('shangjianame'); 	
+			var fabutime = $api.getStorage('fabutime'); 		
+			var time = $api.getStorage('time'); 	
+			var describe = $api.getStorage('describe'); 			
+			var touxiang = $api.getStorage('touxiang'); 			
+			var tupian = $api.getStorage('tupian'); 			
+			var addr = $api.getStorage('addr'); 			
+			var phone = $api.getStorage('phone');   
+			var num = $api.getStorage('num');    
+			var infoobj = { 									
+			shangjianame : shangjianame, 									
+			fabutime: fabutime, 									
+			describe :describe, 									
+			tupian : tupian, 									
+			touxiang : touxiang, 									
+			time : time, 									
+			addr : addr, 									
+			phone : phone 								
+			};         	
+			add1(infoobj);
+
+			if(num=='0'){//若商家资讯介面点的是评论按钮井道该界面直接调用pinglun（）函数
+			pinglun();
+			}       
+			}
+		function add1(data) {
+			var tpl = $api.byId('list_tmp').text;
+			var tplfun = doT.template(tpl);
+			var obj = tplfun(data);
+			var mainshow = $api.byId('mainShow');
+			mainshow.innerHTML = obj;
+		}
+		function xihuan(){
+		var xihuan = $api.byId("xihua");
+		 if(xihuan.getAttribute("src")=="../image/heart.svg")
+			   {
+			   xihuan.setAttribute("src","../image/shoucang1.png");//改变src
+			  
+			   }
+			   else 
+	     	   {
+			   xihuan.setAttribute("src","../image/heart.svg");//改变src
+			 
+			   }
+		}
+		function pinglun(){
+		   var tpl ="";
+		   var pinglunkuang = $api.byId("shurukuang");
+		   tpl +='<input type="text" id="input" placeholder="点击输入你的评论" onblur="hide1()"/>';
+		   tpl +='<input id="tijiao" value="提交" type="button"onclick="tijiao()" onblur="hide()"></input>';
+		   pinglunkuang.innerHTML = tpl;
+    	    pinglunkuang.firstChild.focus();
+		}
+		function hide1(){
+		 var input = $api.byId("input").value;
+		    $api.setStorage('input', input);
+		    var tijiao = $api.byId("tijiao");
+		    tijiao.focus();
+		    
+		}
+		    function hide(){//隐藏输入框   
+       var shurukuang = $api.byId("shurukuang"); 
+       if(shurukuang.firstChild != null)     
+       {
+       var tijiao = $api.byId("tijiao"); 
+       tijiao.removeAttribute("onblur")
+      $api.remove(shurukuang.firstChild);
+     $api.remove(shurukuang.lastChild);
+       }
+
+   }
+				function back() {
+
+				api.closeWin();
+			}
+		function tijiao(){		
+		var showbox = $api.byId("showbox"+xx);
+	    var input = $api.getStorage('input');
+	    var shurukuang = $api.byId("shurukuang"); 
+		if($api.byId("input").value != '')
+		{
+			xx = xx+1;
+		var tpl ='';
+			tpl +='	<div class="comment">';
+			tpl +=		'<div class="zuo">';
+			tpl +=			'<img src="../image/touxiang1.jpg"/>';
+			tpl +=		'</div>';
+			tpl +=		'<div class="you">';
+			tpl +=			'<p class="username">';
+			tpl +=				'会飞的小胖纸';
+			tpl +=			'</p>';
+			tpl +=			'<p class="time">';
+			tpl +=			'	11-12 23:19';
+			tpl +=			'</p>';
+			tpl +=			'<p class="huifu">';
+   		    tpl +=				input;
+			tpl +=			'</p>';
+			tpl +=			'<div class="like">';
+			tpl +=				'<img onclick="plus1()" src="../image/like.png"/>';
+			tpl +=				'<span id="num1">0</span>';
+			tpl +=			'</div>';
+			tpl +=		'</div>';
+			tpl +=	'</div>';
+			tpl += '<div id="showbox' +xx+ '"> </div>';
+			showbox.innerHTML = tpl;
+			$api.byId("input").value = '';
+			hide();
+			}
+			else alert('您输入的内容为空，请输入内容');
+		}	
+   
+	</script>
+</html>
